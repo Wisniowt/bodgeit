@@ -4,7 +4,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.UUID" %>
 <%@page import="com.thebodgeitstore.util.AES"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="./dbconnection.jspf" %>
 
 <%!
@@ -43,8 +43,10 @@
 <h3>Search</h3>
 <font size="-1">
 <% if (as.isSearchRequest()){ %>
-<b>You searched for:</b> <%= as.getQueryString() %><br/><br/>
-    <%= as.getResultsOutput() %>
+<b>You searched for:</b>
+    <c:out value="<%= as.getQueryString() %>"/>
+    <br/><br/>
+    <c:out value="<%= as.getResultsOutput() %>"/>
     <a href="javascript:window.location=window.location.href">New Search</a>
 <% } else { %>
 <form id="advanced" name="advanced" method="POST" >
