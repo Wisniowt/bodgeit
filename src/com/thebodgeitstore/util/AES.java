@@ -47,7 +47,7 @@ import javax.crypto.spec.SecretKeySpec;
        public void setCrtKey(String keyText) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException{
            byte[] bText = keyText.getBytes();
            SecretKey secretKey = new SecretKeySpec(bText, "AES");
-           Cipher c2 = Cipher.getInstance("AES/ECB/NoPadding");
+           Cipher c2 = Cipher.getInstance("AES/GCM/NoPadding");
            c2.init(Cipher.ENCRYPT_MODE, secretKey);
            bText = c2.doFinal(bText);
            key = new SecretKeySpec(bText, "AES");
